@@ -1,13 +1,11 @@
-# Guessing Game using Anonymous Pipes
+# Port-Knocking Server and Client Application
 
-## Author
-- Abhisek Mohapatra
-- Stevens email: amohapat1@stevens.edu
+## Overview
+This project implements a port-knocking mechanism on UNIX systems. It includes a server that requires a sequence of correct "knocks" on dynamically determined ports before delivering a secret message to an authenticated client. The aim of this project is to demonstrate practical applications of TCP/IP sockets in network security.
 
-## Bugs or Issues
-- The server sometimes crashes when the client sends unexpected input.
+## Features
+- **Dynamic Port Knocking**: Server listens for a pre-defined number of knocks on changing ports.
+- **Secret Transmission**: Upon successful port knocking, the server transmits a secret message to the client.
+- **Error Handling**: Both the server and client include basic error handling for robustness.
+- **Timeout Implementation**: The server uses timeouts to improve security and efficiency.
 
-## Description of Resolved Issue
-During testing, I found that if the client sends unexpected input (e.g., non-integer values), the server would crash unexpectedly. This was due to the server not handling invalid input properly, leading to undefined behavior such as buffer overflow or segmentation fault.
-
-To solve this issue, I implemented input validation in both the client and server processes. In the client, I added checks to ensure that only integer inputs are sent to the server. In the server, I added error handling to gracefully handle invalid input from the client, such as displaying an error message and prompting the client for a valid input again.
